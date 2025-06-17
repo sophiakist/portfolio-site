@@ -224,6 +224,13 @@
     --font-width-max: 1500;
   }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  }
+
   html {
     color-scheme: light dark;
   }
@@ -361,10 +368,16 @@ p + p {
 }
 
 .container {
-  padding: 40px 80px;
+  padding: 40px 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 10px;
+  }
 }
 
 .card-wrap {
