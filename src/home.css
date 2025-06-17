@@ -191,7 +191,11 @@
   }
 
   footer {
-    padding-block: 2rem;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 0;
     opacity: 0.5;
   }
 
@@ -388,6 +392,7 @@ p + p {
   transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 5s cubic-bezier(0.23, 1, 0.32, 1);
   opacity: 0.8;
 }
+
 .card-wrap:hover .card {
   transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
   box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px, white 0 0 0 1px, rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset white 0 0 0 6px;
@@ -469,6 +474,7 @@ p + p {
 }
 /* END CARDS */
 
+/* Contact Section */
 .contact {
   display: flex;
   flex-direction: column;
@@ -477,7 +483,6 @@ p + p {
   padding: 2rem;
 }
 
-/* Contact Section */
 .contact-row {
   display: flex;
   flex-wrap: wrap;
@@ -535,7 +540,7 @@ p + p {
 }
 
 .contact-info {
-  flex: 1 1 220px;
+  flex: 1 1 190px;
   max-width: 320px;
   background: rgba(255,255,255,0.05);
   padding: 2rem;
@@ -642,7 +647,13 @@ h5 {
 }
 
 .work-page {
+  width: 100vw;
+  min-height: 100vh;
   background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .work-page footer .fluid {
