@@ -27,7 +27,7 @@ function App() {
           <h3>About Me</h3>
           <div className="row">
             <div className="col">
-              <img src="/public/headshot.jpg" alt="Sophia Kist" />
+              <img src="/headshot.jpg" alt="Sophia Kist" />
             </div>
             <div className="col">
               <p>I’m an aspiring front-end developer based in Gresham, OR, with a passion for web and mobile development, as well as UI/UX design. I hold a BS in Computer Science with a minor in Graphic Design from Walla Walla University. I strive to create clean, intuitive interfaces that elevate the user experience.</p>
