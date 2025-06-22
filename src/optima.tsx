@@ -11,12 +11,21 @@ const Optima: React.FC = () => {
       <HashLink smooth to="/#work">
         <button className="back-btn">← Back</button>
       </HashLink>
-      <div className="atlas">
-        <div className="work-images">
-          <img src={optima1} alt="Optima Page 1" />
-          <img src={optima2} alt="Optima Page 2" />
-          <img src={optima3} alt="Optima Page 3" />
+      <div className="row">
+        <div className="col">
+          <h1>Optima</h1>
+          <h3>TYPE SPECIMEN</h3>
+          <p>A school project designed to showcase the elegance and versatility of the Optima typeface. This specimen highlights the font’s unique blend of classical proportions and modern minimalism, emphasizing its humanist roots and distinctive stroke contrast. The layout and presentation were crafted to reflect the refined beauty Optima is known for, combining thoughtful typography with visual storytelling to honor its timeless design.</p>
         </div>
+        <div className="col">
+          <img className="work-page-img" src={optima1} alt="Optima Type Specimen Page 1" />
+        </div>
+      </div>
+      <div className="row">
+        <img className="work-page-img" src={optima2} alt="Optima Type Specimen Page 2" />
+      </div>
+      <div className="row">
+        <img className="work-page-img" src={optima3} alt="Optima Type Specimen Page 3" />
       </div>
       <footer>
         <p className="fluid">Sophia Kist &copy; 2025</p>

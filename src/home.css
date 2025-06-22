@@ -1,8 +1,14 @@
+/*----------------------------------------------------------------------------
+  Imports & Layers
+----------------------------------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 @import url('https://unpkg.com/normalize.css') layer(normalize);
 
 @layer normalize, base, demo, stick, effect, srollbar, debug;
 
+/*----------------------------------------------------------------------------
+  Debug Layer
+----------------------------------------------------------------------------*/
 @layer debug {
   [data-debug='true'] li {
     outline: 0.05em dashed currentColor;
@@ -12,6 +18,9 @@
   }
 }
 
+/*----------------------------------------------------------------------------
+  Scrollbar Layer
+----------------------------------------------------------------------------*/
 @layer scrollbar {
   @property --hue {
     initial-value: 0;
@@ -27,6 +36,7 @@
   [data-sync-scrollbar='true'] {
     scrollbar-color: oklch(var(--lightness) var(--chroma) var(--hue)) #0000;
   }
+
   @supports (animation-timeline: scroll()) and (animation-range: 0% 100%) {
     [data-sync-scrollbar='true'][data-animate='true'] {
       timeline-scope: --list;
@@ -34,9 +44,7 @@
       animation-name: change, chroma-on, chroma-off;
       animation-fill-mode: both;
       animation-timing-function: linear;
-      /* animation-timeline: scroll(root); */
-      animation-range: entry 50% exit 50%, entry 40% entry 50%,
-        exit 30% exit 40%;
+      animation-range: entry 50% exit 50%, entry 40% entry 50%, exit 30% exit 40%;
       animation-timeline: --list;
       ul {
         view-timeline: --list;
@@ -61,6 +69,9 @@
   }
 }
 
+/*----------------------------------------------------------------------------
+  Effect Layer
+----------------------------------------------------------------------------*/
 @layer effect {
   :root {
     --start: 250;
@@ -85,27 +96,25 @@
   li:not(:last-of-type) {
     color: oklch(
       var(--lightness) var(--base-chroma)
-        calc(var(--start) + (var(--step) * var(--i)))
+      calc(var(--start) + (var(--step) * var(--i)))
     );
   }
 
   @supports (animation-timeline: scroll()) and (animation-range: 0% 100%) {
-    [data-animate='true'] {
-      li {
-        opacity: 0.2;
-        animation-name: brighten;
+    [data-animate='true'] li {
+      opacity: 0.2;
+      animation-name: brighten;
+      animation-fill-mode: both;
+      animation-timing-function: linear;
+      animation-range: cover calc(50% - 1lh) calc(50% + 1lh);
+      animation-timeline: view();
 
-        &:first-of-type {
-          --start-opacity: 1;
-        }
-        &:last-of-type {
-          --brightness: 1;
-          --end-opacity: 1;
-        }
-        animation-fill-mode: both;
-        animation-timing-function: linear;
-        animation-range: cover calc(50% - 1lh) calc(50% + 1lh);
-        animation-timeline: view();
+      &:first-of-type {
+        --start-opacity: 1;
+      }
+      &:last-of-type {
+        --brightness: 1;
+        --end-opacity: 1;
       }
     }
 
@@ -124,6 +133,9 @@
   }
 }
 
+/*----------------------------------------------------------------------------
+  Stick Layer
+----------------------------------------------------------------------------*/
 @layer stick {
   section:first-of-type {
     --font-level: 6;
@@ -161,15 +173,12 @@
     margin: 0;
     list-style-type: none;
   }
-
   [data-snap='true'] {
     scroll-snap-type: y proximity;
-
     li {
       scroll-snap-align: center;
     }
   }
-
   h2,
   li:last-of-type {
     background: linear-gradient(
@@ -181,6 +190,9 @@
   }
 }
 
+/*----------------------------------------------------------------------------
+  Demo Layer
+----------------------------------------------------------------------------*/
 @layer demo {
   header {
     min-height: 100vh;
@@ -189,7 +201,6 @@
     width: 100%;
     padding-inline: 5rem;
   }
-
   footer {
     text-align: center;
     bottom: 0;
@@ -198,7 +209,6 @@
     padding: 2rem 0;
     opacity: 0.5;
   }
-
   h1 {
     --font-size-min: 24;
     --font-level: 8;
@@ -214,6 +224,9 @@
   }
 }
 
+/*----------------------------------------------------------------------------
+  Base Layer
+----------------------------------------------------------------------------*/
 @layer base {
   :root {
     --font-size-min: 14;
@@ -223,26 +236,15 @@
     --font-width-min: 375;
     --font-width-max: 1500;
   }
-
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-  }
-
   html {
     color-scheme: light dark;
   }
-
   [data-theme='light'] {
     color-scheme: light only;
   }
-
   [data-theme='dark'] {
     color-scheme: dark only;
   }
-
   :where(.fluid) {
     --fluid-min: calc(
       var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
@@ -252,24 +254,22 @@ html, body {
     );
     --fluid-preferred: calc(
       (var(--fluid-max) - var(--fluid-min)) /
-        (var(--font-width-max) - var(--font-width-min))
+      (var(--font-width-max) - var(--font-width-min))
     );
     --fluid-type: clamp(
       (var(--fluid-min) / 16) * 1rem,
       ((var(--fluid-min) / 16) * 1rem) -
-        (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
-        (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+      (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+      (var(--fluid-preferred) * var(--variable-unit, 100vi)),
       (var(--fluid-max) / 16) * 1rem
     );
     font-size: var(--fluid-type);
   }
-
   *,
-  *:after,
-  *:before {
+  *::after,
+  *::before {
     box-sizing: border-box;
   }
-
   body {
     display: grid;
     place-items: center;
@@ -278,7 +278,6 @@ html, body {
     font-family: 'Geist', 'SF Pro Text', 'SF Pro Icons', 'AOS Icons',
       'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
   }
-
   body::before {
     --size: 45px;
     --line: color-mix(in hsl, canvasText, transparent 70%);
@@ -303,7 +302,6 @@ html, body {
   :where(.x-link, .bear-link):is(:hover, :focus-visible) {
     opacity: 1;
   }
-
   /* Utilities */
   .sr-only {
     position: absolute;
@@ -318,10 +316,15 @@ html, body {
   }
 }
 
+/*----------------------------------------------------------------------------
+  Global Selectors & Components
+----------------------------------------------------------------------------*/
+/* Miscellaneous fixed element */
 div.tp-dfwv {
   position: fixed;
 }
 
+/* Layout Utilities */
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -329,7 +332,6 @@ div.tp-dfwv {
   align-items: center;
   justify-content: center;
 }
-
 .col {
   flex: 1 1 0;
   min-width: 200px;
@@ -350,7 +352,10 @@ div.tp-dfwv {
 .about-me p {
   font-size: 1.2rem;
 }
-/* CARDS */
+
+/*----------------------------------------------------------------------------
+  CARDS
+----------------------------------------------------------------------------*/
 .title {
   font-size: 24px;
   font-weight: 700;
@@ -361,23 +366,16 @@ div.tp-dfwv {
 p {
   line-height: 1.5em;
 }
-
 h1 + p,
 p + p {
   margin-top: 10px;
 }
 
 .container {
-  padding: 40px 20px;
+  padding: 40px 80px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-@media (max-width: 600px) {
-  .container {
-    padding: 20px 10px;
-  }
 }
 
 .card-wrap {
@@ -405,10 +403,11 @@ p + p {
   transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 5s cubic-bezier(0.23, 1, 0.32, 1);
   opacity: 0.8;
 }
-
 .card-wrap:hover .card {
   transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px, white 0 0 0 1px, rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset white 0 0 0 6px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px, white 0 0 0 1px,
+    rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px,
+    inset white 0 0 0 6px;
 }
 
 .card {
@@ -419,7 +418,8 @@ p + p {
   background-color: #333;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
+  box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px,
+    inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
   transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
@@ -434,7 +434,8 @@ p + p {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   pointer-events: none;
 }
 
@@ -485,9 +486,10 @@ p + p {
 .contact-card .card {
   background: linear-gradient(135deg, oklch(65% 0.3 290), oklch(65% 0.2 310));
 }
-/* END CARDS */
 
-/* Contact Section */
+/*----------------------------------------------------------------------------
+  Contact Section
+----------------------------------------------------------------------------*/
 .contact {
   display: flex;
   flex-direction: column;
@@ -511,10 +513,10 @@ p + p {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.07);
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.07);
 }
 
 .contact-form label {
@@ -532,7 +534,7 @@ p + p {
   background: #fff;
   color: #222;
   resize: vertical;
-  max-width: 380px; /* Reduce from 400/320 if needed */
+  max-width: 380px;
   min-width: 260px;
 }
 
@@ -555,12 +557,12 @@ p + p {
 .contact-info {
   flex: 1 1 190px;
   max-width: 320px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   padding: 2rem;
   border-radius: 12px;
   color: white;
   font-size: 1.1rem;
-  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.07);
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.07);
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -585,51 +587,18 @@ p + p {
   color: oklch(65% 0.250 300);
 }
 
+/*----------------------------------------------------------------------------
+  Responsive
+----------------------------------------------------------------------------*/
 @media (max-width: 900px) {
   .contact-row {
     flex-direction: column;
     align-items: stretch;
   }
-  .contact-form, .contact-info {
+  .contact-form,
+  .contact-info {
     max-width: 100%;
   }
-}
-
-.work-images {
-  align-items: center;
-  justify-content: center;
-}
-
-.work-images img {
-  max-width: 1250px;
-  height: auto;
-  border-radius: 12px;
-  padding: 2rem;
-  display: block;
-  align-items: center;
-  justify-content: center;
-}
-
-.back-btn {
-  position: fixed;
-  top: 2rem;
-  left: 2rem;
-  z-index: 1000;
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
-  border-radius: 6px;
-  border: none;
-  background: linear-gradient(90deg, oklch(65% 0.3 290), oklch(65% 0.2 310));
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.07);
-  transition: background 0.2s, transform 0.1s;
-}
-.back-btn:hover {
-  background: linear-gradient(90deg, oklch(65% 0.3 310), oklch(65% 0.2 290));
-  transform: translateY(-2px) scale(1.03);
 }
 
 h3 {
@@ -639,40 +608,4 @@ h3 {
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-h4 {
-  font-size: 3rem;
-  font-weight: 600;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-h5 {
-  font-size: 1.25rem;
-  font-weight: 300;
-  padding-left: 20%;
-  padding-right: 20%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.work-page {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #f0f0f0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.work-page footer .fluid {
-  color: black; /* Change to your desired color */
-}
-
-.optima-page {
-  background-color: #000; /* Black background */
 }
