@@ -8,7 +8,7 @@ import './home.css'
 const Optima: React.FC = () => {
   return (
     <div className="work-page">
-      <HashLink smooth to="/#work">
+      <HashLink to="/#work">
         <button className="back-btn">← Back</button>
       </HashLink>
       <div className="row">
@@ -21,10 +21,10 @@ const Optima: React.FC = () => {
           <img className="work-page-img" src={optima1} alt="Optima Type Specimen Page 1" />
         </div>
       </div>
-      <div className="row">
+      <div className="optima-row">
         <img className="work-page-img" src={optima2} alt="Optima Type Specimen Page 2" />
       </div>
-      <div className="row">
+      <div className="optima-row">
         <img className="work-page-img" src={optima3} alt="Optima Type Specimen Page 3" />
       </div>
       <footer>

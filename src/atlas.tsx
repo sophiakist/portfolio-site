@@ -15,7 +15,7 @@ const Atlas: React.FC = () => {
   return (
   <>
     <div className="work-page">
-      <HashLink smooth to="/#work">
+      <HashLink to="/#work">
         <button className="back-btn">← Back</button>
       </HashLink>
       <div className="row">
@@ -127,11 +127,11 @@ const Atlas: React.FC = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col">
+        <div className="col-3">
           <h1>Desktop Experience</h1>
           <p>The Atlas on desktop offers a spacious layout with expanded menus and bold announcements, tailored for easier navigation and visibility on larger screens.</p>
         </div>
-        <div className="col">
+        <div className="col-9">
           <img className="work-web-img" src={atlasweb} alt="Atlas Web Experience" />
         </div>
       </div>

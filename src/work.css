@@ -79,6 +79,20 @@
 
 .work-page .row {
   padding: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.col-3 {
+  flex: 0 0 20%;
+  max-width: 20%;
+  padding-right: 1rem;
+}
+
+.col-9 {
+  flex: 0 0 70%;
+  max-width: 70%;
+  padding-left: 1rem;
 }
 
 .work-phone-img {
@@ -90,16 +104,22 @@
 
 .work-web-img {
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
   height: auto;
-  padding: 2rem;
 }
 
 .work-page-img {
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px;
   height: auto;
-  padding: 2rem;
+}
+
+.optima-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
 }
 
 
@@ -151,6 +171,7 @@
     font-size: 1rem;
     max-width: 200px;
 }
+
 @media (max-width: 768px) {
   .row {
     flex-direction: column;
@@ -159,9 +180,12 @@
     padding: 0 1rem;
   }
   
-  .col {
+  .col, .col-3, .col-9 {
     width: 100%;
     text-align: center;
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 0;
   }
   
   .work-phone-img {

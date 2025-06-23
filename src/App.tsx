@@ -4,16 +4,20 @@ import Atlas from './atlas'
 import Submitty from './submitty'
 import Grindhaus from './grindhaus'
 import Optima from './optima'
+import ScrollToTop from './ScrollToTop'
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/atlas" element={<Atlas />} />
-      <Route path="/submitty" element={<Submitty />} />
-      <Route path="/grindhaus" element={<Grindhaus />} />
-      <Route path="/optima" element={<Optima />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/atlas" element={<Atlas />} />
+        <Route path="/submitty" element={<Submitty />} />
+        <Route path="/grindhaus" element={<Grindhaus />} />
+        <Route path="/optima" element={<Optima />} />
+      </Routes>
+    </>
   )
 }
 
