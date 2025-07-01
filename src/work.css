@@ -215,3 +215,54 @@
     max-width: 50%;
   }
 }
+
+/* App Download Section */
+.app-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.app-store-btn {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.app-store-btn:hover {
+  transform: scale(1.05);
+}
+
+.app-store-badge {
+  height: 60px;
+  width: auto;
+}
+
+.web-app-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  height: 55px;
+  background: linear-gradient(90deg, oklch(65% 0.3 290), oklch(65% 0.2 310));
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+.web-app-btn:hover {
+  background: linear-gradient(90deg, oklch(65% 0.3 310), oklch(65% 0.2 290));
+  transform: translateY(-2px) scale(1.03);
+  text-decoration: none;
+  color: white;
+}
+
+.web-app-btn span {
+  font-size: 1.2rem;
+}

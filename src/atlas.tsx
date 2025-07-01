@@ -135,6 +135,35 @@ const Atlas: React.FC = () => {
           <img className="work-web-img" src={atlasweb} alt="Atlas Web Experience" />
         </div>
       </div>
+      <div className="row">
+        <div className="col">
+          <h1>Get The Atlas</h1>
+          <p>Experience The Atlas on your preferred platform</p>
+          <div className="app-links">
+            <a 
+              href="https://apps.apple.com/us/app/the-atlas/id6745412444" 
+              className="app-store-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img 
+                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
+                alt="Download on the App Store"
+                className="app-store-badge"
+              />
+            </a>
+            <a 
+              href="https://atlas.cs.wallawalla.edu/" 
+              className="web-app-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>🌐</span>
+              Try Web App
+            </a>
+          </div>
+        </div>
+      </div>
       <footer>
         <p>Sophia Kist &copy; 2025</p>
       </footer>

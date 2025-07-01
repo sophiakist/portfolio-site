@@ -18,6 +18,16 @@ const Grindhaus: React.FC = () => {
           <h3>WEBISTE FOR MOCK CLIENT</h3>
           <p><strong>Tools: </strong>React, HTML/CSS</p>
           <p>A fictional café website designed and built for a mock client to highlight front-end development and UI/UX skills. The site captures the modern-industrial aesthetic and community-centered vibe of a small artisan coffee shop.</p>
+          <a 
+            href="https://grindhaus-coffee-co.vercel.app/" 
+            className="web-app-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ marginTop: '1.5rem' }}
+          >
+            <span>🌐</span>
+            View Live Site
+          </a>
         </div>
         <div className="col-9">
           <img className="work-web-img" src={grindhaushome} alt="Grindhaus Home Page" />
